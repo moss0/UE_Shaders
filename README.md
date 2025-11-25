@@ -1,12 +1,17 @@
-# UE_Shaders
-Technical art shaders project using Unreal Engine.
+# Technical art shaders project using Unreal Engine
+
+mention desmos
 
 ## 1. Stylized Water Material with World Position Offset
 
-- How does WPO affect performance compared to animated meshes?
-- How can you control wave direction and intensity?
-- What vertex density is required for smooth wave deformation?
-- How does your water material respond to different lighting conditions?
+- How does WPO affect performance compared to animated meshes?  
+
+- How can you control wave direction and intensity?  
+How to control wave direction: 
+- What vertex density is required for smooth wave deformation?  
+
+- How does your water material respond to different lighting conditions?  
+
 
 ## 2. Material Parameter Collection (MPC) System
 
@@ -29,7 +34,7 @@ Technical art shaders project using Unreal Engine.
 
 ## 5. Post Process Material
 
-I decided to make a drunk first person shader.
+I decided to make a drunk first person shader as it has multiple things going on in parallel.
 
 1. Started with a screen position node with UV plugged into a SceneTexture node plugged into the result node. I experimented with adding random operations into this setup to observe the effects, for example, multiplying UVs, adding sine nodes, adding to UVs.
 
@@ -41,7 +46,6 @@ Wanted to have the u and v axes to stretch in an unsynced sinusoidal manner so I
 4. Wanted the screen to rotate back and forth to simulate the poor coordination and disorientation while drunk. Chose to use a custom rotator node as it was straightforward, then applied a rotation using sine and time nodes. Made a rotation angle parameter but I did not like how the angle goes from 0 to 1 so I divided it by 360 to make it more intuitive to someone configuring the material instance.
 
 5. Wanted a tinge applied to be applied fullscreen. Multiplied the scene texture's color output by a color but ran into a problem, the color was not accepted because of a vector type difference. I did not realise that the white output pin of my color does not include alpha, meaning it was a vector 3, when I needed a vector 4. Solved by appending the alpha channel to RGB.
-
 
 ## Assessment Criteria
 
@@ -102,30 +106,3 @@ Your work will be evaluated against the following criteria:
 
 
 **Remember:** This task is about demonstrating technical understanding through practical application. Focus on clean implementation, good documentation, and showing that you understand *why* these techniques are used in professional workflows.
-
-<br>
-
-<br>
-
-<br>
-
-html spans
-
-desmos
-
-<span style="color:red">This text is red.</span>  
-
-<span style="color:blue">This text is blue.</span>  
-<span style="color:cyan">This text is cyan.</span>  
-<span style="color:teal">This text is teal.</span>  
-<span style="color:turquoise">This text is turquoise.</span>  
-<span style="color:lightblue">This text is light blue.</span>  
-<span style="color:azure">This text is light blue.</span>  
-
-<span style="color:green">This text is green.</span>  
-<span style="color:lightgreen">This text is light green.</span>  
-
-<span style="color:orange">This text is orange.</span>  
-
-<span style="color:purple">This text is purple.</span>  
-
