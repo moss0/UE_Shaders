@@ -29,6 +29,20 @@ Technical art shaders project using Unreal Engine.
 
 ## 5. Post Process Material
 
+I decided to make a drunk first person shader.
+
+1. Started with a screen position node with UV plugged into a SceneTexture node plugged into the result node. I experimented with adding random operations into this setup to observe the effects, for example, multiplying UVs, adding sine nodes, adding to UVs.
+
+2. Added add noise texture to add to add to the UV to produce a blurring effect. I divided the scale parameter to ensure that the values would not be too small when configuring its material instances.
+
+3. Wanted the screen to stretch from the center but I ran into a problem where the stretching would occur from the edge instead. After some research, I learned that in order to stretch from the center you must first move the UVs center to the origin position, stretch, then move the center back.  
+Wanted to have the u and v axes to stretch in an unsynced sinusoidal manner so I used two component masks for u and v, stretched the values, then appended it back together. To cause the unsynced stretching, I used sine for the u and cosine for the v. All this takes place inbetween the center movement and restoration.
+
+4. Wanted the screen to rotate back and forth to simulate the poor coordination and disorientation while drunk. Chose to use a custom rotator node as it was straightforward, then applied a rotation using sine and time nodes. Made a rotation angle parameter but I did not like how the angle goes from 0 to 1 so I divided it by 360 to make it more intuitive to someone configuring the material instance.
+
+5. Wanted a tinge applied to be applied fullscreen. Multiplied the scene texture's color output by a color but ran into a problem, the color was not accepted because of a vector type difference. I did not realise that the white output pin of my color does not include alpha, meaning it was a vector 3, when I needed a vector 4. Solved by appending the alpha channel to RGB.
+
+
 ## Assessment Criteria
 
 Your work will be evaluated against the following criteria:
@@ -88,3 +102,30 @@ Your work will be evaluated against the following criteria:
 
 
 **Remember:** This task is about demonstrating technical understanding through practical application. Focus on clean implementation, good documentation, and showing that you understand *why* these techniques are used in professional workflows.
+
+<br>
+
+<br>
+
+<br>
+
+html spans
+
+desmos
+
+<span style="color:red">This text is red.</span>  
+
+<span style="color:blue">This text is blue.</span>  
+<span style="color:cyan">This text is cyan.</span>  
+<span style="color:teal">This text is teal.</span>  
+<span style="color:turquoise">This text is turquoise.</span>  
+<span style="color:lightblue">This text is light blue.</span>  
+<span style="color:azure">This text is light blue.</span>  
+
+<span style="color:green">This text is green.</span>  
+<span style="color:lightgreen">This text is light green.</span>  
+
+<span style="color:orange">This text is orange.</span>  
+
+<span style="color:purple">This text is purple.</span>  
+
